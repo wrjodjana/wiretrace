@@ -39,9 +39,10 @@ for key, packets in grouped_packets.items():
   if mean == 0:
     continue
 
-  variance = ((g - mean) for g in gaps) / len(gaps)
+  variance = sum((g - mean) ** 2 for g in gaps) / len(gaps)
   cv = (variance ** 0.5) / mean
   timing_scores[key] = cv
+
 
 
 
